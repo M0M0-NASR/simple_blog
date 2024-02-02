@@ -1,0 +1,23 @@
+[33mcommit 81731e00851fdbc60c407ef6484e39d106f485c6[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Thu Feb 1 19:13:27 2024 +0200
+
+    Update View: posts.index view
+
+[33mcommit 9a5c95c71509d89c56438a265797012c2fa71893[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Thu Feb 1 09:17:44 2024 +0200
+
+    Create Table data view
+
+[33mcommit 3c7421cd3e67f4762cac30aa22bb76921884574f[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Thu Feb 1 04:15:30 2024 +0200
+
+    craete navbar view
+
+[33mcommit ec078b81087c41d513be4eec559a72bbf59cbf67[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Thu Feb 1 00:48:45 2024 +0200
+
+    init project

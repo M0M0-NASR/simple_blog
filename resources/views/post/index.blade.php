@@ -20,7 +20,7 @@
     </thead>
     <tbody class="w-auto table-group-divider">
       @php
-        $i = 1;
+        $i = 0;
       @endphp
       @foreach ($posts as $post)
           
@@ -30,10 +30,14 @@
         <td>{{$post['posted_by']}}</td>
         <td>{{$post['created_at']}}</td>
         <td class="actions d-grid d-md-flex gap-1">
-            <a class="btn btn-success ">view</a>
-            <a class="btn btn-primary  ">edit</a>
+            <a href={{route('posts.show', ['post' => $i ])}} class="btn btn-success ">view</a>
+            <a href={{route('posts.edit', ['post' => $i ])}}  class="btn btn-primary  ">edit</a>
             <a class="btn btn-secondary  ">share</a>
-            <a class="btn btn-danger ">delete</a>
+            <form action={{route('posts.destroy', ['post' => $i ])}} method="post">
+              @csrf()
+              @method("delete")
+              <button class="btn btn-danger ">delete</button>
+            </form>
         </td>
       @endforeach 
     </tbody>
