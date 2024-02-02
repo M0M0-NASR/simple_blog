@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="text-center my-2">
-  <a class="btn btn-success">Create Post</a>
+  <a href="{{ route('posts.create')}}" class="btn btn-success">Create Post</a>
   
 </div>
 
@@ -19,11 +19,13 @@
       </tr>
     </thead>
     <tbody class="w-auto table-group-divider">
-      
+      @php
+        $i = 1;
+      @endphp
       @foreach ($posts as $post)
           
       <tr>
-        <td scope="row">{{$post['id']}}</td >
+        <td scope="row">{{$i++}}</td >
         <td>{{$post['title']}}</td>
         <td>{{$post['posted_by']}}</td>
         <td>{{$post['created_at']}}</td>

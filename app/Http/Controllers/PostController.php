@@ -6,15 +6,21 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    protected $fakeData = [
+        "1" => [ "title" => "Facebook", "posted_by" => "ali", "created_at" => "2022-2-2 12:1 PM" , 
+                "content"=> "this is first time to wrete this is first time to wrete this is first time
+                            to wrete this is first time to wrete this is first time to wrete "] ,
+        "2" => [ "title" => "First", "posted_by" => "moo", "created_at" => "2022-2-2 12:1 PM",
+                "content"=> "this is first time to wrete this is first time to wrete this is first time
+                            to wrete this is first time to wrete this is first time to wrete "]
+    ];
+    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $posts = [
-            ["id" => 1, "title" => "Facebook", "posted_by" => "ali", "created_at" => "2022-2-2 12:1 PM"],
-            ["id" => 1, "title" => "Facebook", "posted_by" => "ali", "created_at" => "2022-2-2 12:1 PM"]
-        ];
+        $posts = $this->fakeData;
         
         return view("post/index", compact("posts"));
     }
@@ -25,6 +31,7 @@ class PostController extends Controller
     public function create()
     {
         //
+        return view("post/create");
     }
 
     /**
@@ -41,6 +48,8 @@ class PostController extends Controller
     public function show(string $id)
     {
         //
+        $post = $this->fakeData[$id];
+        return view('post/show' , compact('post'));
     }
 
     /**

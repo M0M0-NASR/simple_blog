@@ -18,6 +18,6 @@ use Illuminate\Support\Facades\Route;
 // Login , Register Routes
 Auth::routes();
 
-Route::resource("", PostController::class);
+Route::resource("posts", PostController::class);
 
 
