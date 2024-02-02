@@ -1,11 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="text-center my-2">
-  <a href="{{ route('posts.create')}}" class="btn btn-success">Create Post</a>
-  
-</div>
 
+@if (session('alert'))
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>System Message!</strong> {{session('alert')}}.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
+
+<div class="text-center my-2">
+  <a href="{{ route('posts.create')}}" class="btn btn-success">Create Post</a>  
+</div>
 
 {{-- Post data table  --}}
 <table class="table table-striped table-dark table-bordered rounded shadow">

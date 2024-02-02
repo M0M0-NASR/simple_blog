@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class PostController extends Controller
 {
@@ -36,17 +37,16 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
-        
         Post::create($request->validate(
             ["title"=>"required|" 
             , "content"=>"required|string|" 
             , "img_cover"=>"nullable"]
         ));
 
-        return to_route('posts.create' , ["error"=>false]);
-
+    
+        return redirect()->route('posts.index')->with("alert" ,"Post Created Successfully");
     }
 
     /**
