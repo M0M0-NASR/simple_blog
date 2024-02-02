@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     protected $fakeData = [
         "1" => [ "title" => "Facebook", "posted_by" => "ali", "created_at" => "2022-2-2 12:1 PM" , 
-                "content"=> "this is first time to wrete this is first time to wrete this is first time
-                            to wrete this is first time to wrete this is first time to wrete "] ,
+                "content"=> "this is first time to wrete this is first time to wrete this is first timeto wrete this is first time to wrete this is first time to wrete "] ,
         "2" => [ "title" => "First", "posted_by" => "moo", "created_at" => "2022-2-2 12:1 PM",
-                "content"=> "this is first time to wrete this is first time to wrete this is first time
-                            to wrete this is first time to wrete this is first time to wrete "]
+                "content"=> "this is first time to wrete this is first time to wrete this is first time to wrete this is first time to wrete this is first time to wrete "]
     ];
     
     /**
@@ -39,7 +38,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        Post::create($request->validate(
+            ["title"=>"required|" 
+            , "content"=>"required|string|" 
+            , "img_cover"=>"nullable"]
+        ));
+
+        return to_route('posts.create' , ["error"=>false]);
+
     }
 
     /**
@@ -58,6 +65,9 @@ class PostController extends Controller
     public function edit(string $id)
     {
         //
+        $post = $this->fakeData[$id];
+        return view('post/edit' , compact('post' , 'id'));
+
     }
 
     /**
@@ -67,6 +77,17 @@ class PostController extends Controller
     {
         //
     }
+
+    /**
+    * display the share page
+    */
+    public function share(string $id)
+    {
+        //
+        throw new \Exception('Not Implemnted yet');
+    }
+
+
 
     /**
      * Remove the specified resource from storage.

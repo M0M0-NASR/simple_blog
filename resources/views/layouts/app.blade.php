@@ -23,5 +23,6 @@
             @yield('content')
         </main>
     </div>
+    @vite(['../public/assets/js/bootstrap.bundle.min.js'])
 </body>
 </html>

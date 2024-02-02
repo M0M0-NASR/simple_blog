@@ -30,10 +30,10 @@
         <td>{{$post['posted_by']}}</td>
         <td>{{$post['created_at']}}</td>
         <td class="actions d-grid d-md-flex gap-1">
-            <a href={{route('posts.show', ['post' => $i ])}} class="btn btn-success ">view</a>
-            <a href={{route('posts.edit', ['post' => $i ])}}  class="btn btn-primary  ">edit</a>
-            <a class="btn btn-secondary  ">share</a>
-            <form action={{route('posts.destroy', ['post' => $i ])}} method="post">
+            <a href={{route('posts.show', $i )}} class="btn btn-success ">view</a>
+            <a href={{route('posts.edit', $i )}}  class="btn btn-primary  ">edit</a>
+            <a href={{route('posts.share', $i )}} class="btn btn-secondary">share</a>
+            <form action={{route('posts.destroy', $i )}} method="post">
               @csrf()
               @method("delete")
               <button class="btn btn-danger ">delete</button>
