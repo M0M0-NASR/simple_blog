@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class PostController extends Controller
 {
@@ -13,6 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        
         $allPosts = Post::all();
         return view("post/index", compact("allPosts"));
     }
@@ -28,31 +30,24 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
         Post::create($request->validate(
-            [
-                "title" => "required|string"
-                ,
-                "content" => "required|string|"
-                ,
-                "img_cover" => "nullable"
-            ]
-        )
-        );
+            ["title"=>"required|string" 
+            , "content"=>"required|string|" 
+            , "img_cover"=>"nullable"]
+        ));
 
-        return redirect()->route('posts.index')->with("alert", "Post Created Successfully");
+        return redirect()->route('posts.index')->with("alert" ,"Post Created Successfully");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
-    {  
-        return "asdflkj;sadf"; 
-        // dd("adsfsdaf");
-        // $singlePost = Post::find($id);
-        // return view('post/show', compact('singlePost'));
+    public function show(string $id)
+    {
+        $singlePost = Post::find($id);
+        return view('post/show' , compact('singlePost'));
     }
 
     /**
@@ -61,7 +56,7 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $singlePost = Post::find($id);
-        return view('post/edit', compact('singlePost'));
+        return view('post/edit' , compact('singlePost'));
 
     }
 
@@ -71,24 +66,19 @@ class PostController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        Post::where('id', $id)->update($request->validate(
-            [
-                "title" => "required|string"
-                ,
-                "content" => "required|string"
-                ,
-                "img_cover" => "nullable"
-            ]
-        )
-        );
+        Post::where('id' , $id)->update($request->validate(
+            [ "title"=>"required|string|" 
+            , "content"=>"required|string|" 
+            , "img_cover"=>"nullable"]
+        ));
 
-        return redirect()->route("posts.edit", ['post' => $id])->with("alert", "Post Updated Successfully");
+        return redirect()->route("posts.edit" , ['post'=> $id])->with("alert" ,"Post Updated Successfully");
 
     }
 
     /**
-     * display the share page
-     */
+    * display the share page
+    */
     public function share(string $id)
     {
         //
@@ -103,7 +93,7 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         //
-        Post::where('id' ,$id)->destroy();
-        return redirect()->route('posts.index')->with('alert', 'Post Deleted Successfully');
+        Post::destroy($id);
+        return redirect()->route('posts.index')->with('alert','Post Deleted Successfully');
     }
 }

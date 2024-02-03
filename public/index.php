@@ -44,22 +44,12 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-try{
+$kernel = $app->make(Kernel::class);
 
-    $app = require_once __DIR__.'/../bootstrap/app.php';
+$response = $kernel->handle(
+    $request = Request::capture()
+)->send();
 
-    $kernel = $app->make(Kernel::class);
-    
-    $response = $kernel->handle(
-        $request = Request::capture()
-    )->send();
-    
-    $kernel->terminate($request, $response);
-
-}
-
-catch(\Throwable $e){
-
-    throw $e;
-}
+$kernel->terminate($request, $response);

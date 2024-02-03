@@ -17,12 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 // Login , Register Routes
 Auth::routes();
-Route::get("posts/{post}", [PostController::class,"show"])->name("post.show");
-Route::resource("/posts", PostController::class);
+
 // Post Route
 Route::group( [],function () {
-    
-    
+
+    Route::resource("/posts", PostController::class);
     Route::get("/posts/{post}/share",[ PostController::class , "share"])->name('posts.share');
 
 });
