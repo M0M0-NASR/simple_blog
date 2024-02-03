@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Post Route
-Route::group( [],function () {
+Route::group( ["middleware" => "auth"], function () {
 
     Route::resource("/posts", PostController::class);
     Route::get("/posts/{post}/share",[ PostController::class , "share"])->name('posts.share');
