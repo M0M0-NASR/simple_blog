@@ -16,14 +16,13 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body data-bs-theme="dark">
+<body>
 
-    <div id="app bg-danger" >
+    <div id="app">
             @include('inc.navbar')
         <main class="container py-4">
             @yield('content')
         </main>
     </div>
-    @vite(['../public/assets/js/bootstrap.bundle.min.js'])
 </body>
 </html>

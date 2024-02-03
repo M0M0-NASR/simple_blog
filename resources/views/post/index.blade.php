@@ -31,28 +31,29 @@
         $i = 0;
       @endphp
       @foreach ($allPosts as $post)
-          
+          {{$post->id}}
       <tr>
         <td scope="row">{{++$i}}</td >
         <td>{{$post->title}}</td>
         <td>{{$post->posted_by}}</td>
         <td>{{$post->created_at}}</td>
         <td class="actions d-grid d-md-flex gap-1">
-            <a href={{route('posts.show', $post->id )}} class="btn btn-success ">view</a>
+            <a href="{{route('post.show', $post->id )}}" class="btn btn-success ">view</a>
             <a href={{route('posts.edit', $post->id )}}  class="btn btn-primary  ">edit</a>
             <a href={{route('posts.share', $post->id )}} class="btn btn-secondary">share</a>
             
             <!-- Delete Button compont -->
-            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">delete</button>
+            
+            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">delete {{$post->id}}</button>
             <!-- Modal  For  Confrim Delete -->
-            <div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Post</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="modal-body text-dark">
+                  <div class="modal-body">
                     Are you sure for delete this post
                   </div>
                   <div class="modal-footer">

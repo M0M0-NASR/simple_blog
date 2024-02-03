@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 
 class PostController extends Controller
 {
@@ -14,7 +13,6 @@ class PostController extends Controller
      */
     public function index()
     {
-
         $allPosts = Post::all();
         return view("post/index", compact("allPosts"));
     }
@@ -49,10 +47,12 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $singlePost = Post::find($id);        
-        return view('post/show', compact('singlePost'));
+    public function show($id)
+    {  
+        return "asdflkj;sadf"; 
+        // dd("adsfsdaf");
+        // $singlePost = Post::find($id);
+        // return view('post/show', compact('singlePost'));
     }
 
     /**
@@ -73,9 +73,9 @@ class PostController extends Controller
         //
         Post::where('id', $id)->update($request->validate(
             [
-                "title" => "required|string|"
+                "title" => "required|string"
                 ,
-                "content" => "required|string|"
+                "content" => "required|string"
                 ,
                 "img_cover" => "nullable"
             ]
@@ -103,7 +103,7 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         //
-        Post::destroy($id);
+        Post::where('id' ,$id)->destroy();
         return redirect()->route('posts.index')->with('alert', 'Post Deleted Successfully');
     }
 }
