@@ -16,8 +16,9 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
-    <div id="app">
+<body data-bs-theme="dark">
+
+    <div id="app bg-danger" >
             @include('inc.navbar')
         <main class="container py-4">
             @yield('content')
