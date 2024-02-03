@@ -30,18 +30,18 @@
       @php
         $i = 0;
       @endphp
-      @foreach ($posts as $post)
+      @foreach ($allPosts as $post)
           
       <tr>
-        <td scope="row">{{$i++}}</td >
-        <td>{{$post['title']}}</td>
-        <td>{{$post['posted_by']}}</td>
-        <td>{{$post['created_at']}}</td>
+        <td scope="row">{{++$i}}</td >
+        <td>{{$post->title}}</td>
+        <td>{{$post->posted_by}}</td>
+        <td>{{$post->created_at}}</td>
         <td class="actions d-grid d-md-flex gap-1">
-            <a href={{route('posts.show', $i )}} class="btn btn-success ">view</a>
-            <a href={{route('posts.edit', $i )}}  class="btn btn-primary  ">edit</a>
-            <a href={{route('posts.share', $i )}} class="btn btn-secondary">share</a>
-            <form action={{route('posts.destroy', $i )}} method="post">
+            <a href={{route('posts.show', $post->id )}} class="btn btn-success ">view</a>
+            <a href={{route('posts.edit', $post->id )}}  class="btn btn-primary  ">edit</a>
+            <a href={{route('posts.share', $post->id )}} class="btn btn-secondary">share</a>
+            <form action={{route('posts.destroy', $post->id )}} method="post">
               @csrf()
               @method("delete")
               <button class="btn btn-danger ">delete</button>

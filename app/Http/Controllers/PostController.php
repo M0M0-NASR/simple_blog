@@ -8,21 +8,15 @@ use Illuminate\Http\RedirectResponse;
 
 class PostController extends Controller
 {
-    protected $fakeData = [
-        "1" => [ "title" => "Facebook", "posted_by" => "ali", "created_at" => "2022-2-2 12:1 PM" , 
-                "content"=> "this is first time to wrete this is first time to wrete this is first timeto wrete this is first time to wrete this is first time to wrete "] ,
-        "2" => [ "title" => "First", "posted_by" => "moo", "created_at" => "2022-2-2 12:1 PM",
-                "content"=> "this is first time to wrete this is first time to wrete this is first time to wrete this is first time to wrete this is first time to wrete "]
-    ];
-    
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $posts = $this->fakeData;
         
-        return view("post/index", compact("posts"));
+        $allPosts = Post::all();
+        return view("post/index", compact("allPosts"));
     }
 
     /**
@@ -30,7 +24,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
         return view("post/create");
     }
 
@@ -40,12 +33,11 @@ class PostController extends Controller
     public function store(Request $request )
     {
         Post::create($request->validate(
-            ["title"=>"required|" 
+            ["title"=>"required|string" 
             , "content"=>"required|string|" 
             , "img_cover"=>"nullable"]
         ));
 
-    
         return redirect()->route('posts.index')->with("alert" ,"Post Created Successfully");
     }
 
@@ -54,9 +46,8 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
-        $post = $this->fakeData[$id];
-        return view('post/show' , compact('post'));
+        $singlePost = Post::find($id);
+        return view('post/show' , compact('singlePost'));
     }
 
     /**
@@ -64,9 +55,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
-        $post = $this->fakeData[$id];
-        return view('post/edit' , compact('post' , 'id'));
+        $singlePost = Post::find($id);
+        return view('post/edit' , compact('singlePost'));
 
     }
 
@@ -76,6 +66,14 @@ class PostController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        Post::where('id' , $id)->update($request->validate(
+            [ "title"=>"required|string|" 
+            , "content"=>"required|string|" 
+            , "img_cover"=>"nullable"]
+        ));
+
+        return redirect()->route("posts.edit" , ['post'=> $id])->with("alert" ,"Post Updated Successfully");
+
     }
 
     /**
