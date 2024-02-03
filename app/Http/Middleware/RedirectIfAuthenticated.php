@@ -21,6 +21,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                // var_dump($request);
                 return redirect(RouteServiceProvider::HOME);
             }
         }

@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/posts';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -25,7 +25,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
-        Route::pattern('', self::HOME);
         Route::patterns([
             'post'=>"[0-9]"
         ]);

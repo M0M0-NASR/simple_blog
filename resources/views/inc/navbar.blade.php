@@ -23,7 +23,10 @@
               <a class="btn btn-danger" href={{route('register')}}>Sign up</a>
               @endguest
               @auth
-              <a class="btn btn-danger" href={{route('logout')}}>Logout</a>
+              <form action="{{route('logout')}}" method="post">
+                @csrf
+                <button class="btn btn-danger" type="submit">logout</button>           
+              </form>
               @endauth         
             </div>
         
