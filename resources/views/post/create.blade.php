@@ -2,12 +2,15 @@
 
 @section('content')
 
+{{-- @error('user_id')
+  @dd($message)
+@enderror --}}
 
 <form class="row g-3 shadow mt-3 rounded-2 p-2" action="{{ route('posts.store')}}" method="POST">
     
   @csrf
-    @method('post')
-    
+  @method('post')
+    <input type="hidden" name="user_id" value="{{ request()->session()->get("user")['id']}}" >
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Title</label>
       <input name="title" value="{{old('title')}}" type="text"
@@ -43,15 +46,5 @@
 
   </form>
   
-  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
+ 
 @endsection

@@ -63,10 +63,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $token = uuid_create();
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'token' => $token,
         ]);
+        // requset()->re
+        // session('user', $user->toArray());
+        request()->session()->put('user', $user->toArray());
+        dd(session('user'));
+        return $user;
     }
 }

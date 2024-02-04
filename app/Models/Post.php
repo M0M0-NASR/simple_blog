@@ -13,5 +13,6 @@ class Post extends Model
         "title",
         "img_cover",
         "content",
+        "user_id",
     ];
 }

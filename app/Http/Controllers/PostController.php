@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
@@ -14,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        
+        // dd(request()->session()->all());
+
         $allPosts = Post::all();
         return view("post/index", compact("allPosts"));
     }
@@ -24,21 +26,31 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view("post/create");
+       
+        return view("post/create" );
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request )
     {
+
+        // $user = User::find($request->user_id);
+        // if($user->token !== $request->session()->get("user")['token'])
+        //     return redirect()->route('posts.index')->with("alert" ,"Un Authrize Action");        
+        
         Post::create($request->validate(
             ["title"=>"required|string" 
             , "content"=>"required|string|" 
-            , "img_cover"=>"nullable"]
-        ));
+            , "img_cover"=>"nullable"
+            , "user_id" =>"required"]
+            ));
 
-        return redirect()->route('posts.index')->with("alert" ,"Post Created Successfully");
+        request()->session()->flash('alert', 'Post Created Successfully');
+
+
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -72,7 +84,9 @@ class PostController extends Controller
             , "img_cover"=>"nullable"]
         ));
 
-        return redirect()->route("posts.edit" , ['post'=> $id])->with("alert" ,"Post Updated Successfully");
+        request()->session()->flash('alert', 'Post Updated Successfully');
+
+        return redirect()->route("posts.edit" , ['post'=> $id]);
 
     }
 
@@ -94,6 +108,10 @@ class PostController extends Controller
     {
         //
         Post::destroy($id);
-        return redirect()->route('posts.index')->with('alert','Post Deleted Successfully');
+
+        request()->session()->flash('alert', 'Post Deleted successful!');
+
+
+        return redirect()->route('posts.index');
     }
 }

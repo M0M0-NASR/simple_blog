@@ -21,7 +21,7 @@
       <tr class=" px-5">
         <th scope="col">#</th>
         <th scope="col">Title</th>
-        <th scope="col">Posted By</th>
+        <th scope="col">Content</th>
         <th scope="col">Created At</th>
         <th scope="col">Actions</th>
       </tr>
@@ -36,7 +36,7 @@
       <tr>
         <td scope="row">{{++$i}}</td >
         <td>{{$post->title}}</td>
-        <td>{{$post->posted_by}}</td>
+        <td>{{$post->content}}</td>
         <td>{{$post->created_at}}</td>
         <td class="actions d-grid d-md-flex gap-1">
             <a href={{route('posts.show', $post->id )}} class="btn btn-success ">view</a>

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(["verify"=> true]);
 
 // Post Route
-Route::group(["middleware" => ["verified" , "auth"]], function () {
+Route::middleware(["auth"])->group( function () {
     Route::resource("/posts", PostController::class);
     Route::get("/posts/{post}/share",[ PostController::class , "share"])->name('posts.share');
 
