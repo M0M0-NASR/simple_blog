@@ -28,6 +28,7 @@
                 <button class="btn btn-danger" type="submit">logout</button>           
               </form>
               @endauth         
+              
             </div>
         
       </div>
