@@ -61,6 +61,8 @@
                     <form action={{route('posts.destroy', $post->id )}} method="post">
                       @csrf()
                       @method("delete")
+                      <input type="hidden" name="user_id" value="{{ request()->session()->get("user")['id']}}" >
+
                       <input type="submit" value="Delete" class="btn btn-danger">
                     </form>
                   </div>

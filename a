@@ -1,0 +1,95 @@
+[33mcommit e0d5c7cd684e72042e85ed9c9718ecab567ddeb7[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Sun Feb 4 02:03:53 2024 +0200
+
+    Add Authoriaze Feature
+
+[33mcommit cdb830548d4dbd4d474a8dbd885c2729693b2f45[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Sat Feb 3 09:10:34 2024 +0200
+
+    Finish Login and Register Feature
+
+[33mcommit 25da0b783e3766c47eba68629eb25b3e19a6bdf7[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Sat Feb 3 08:01:25 2024 +0200
+
+    Update Auth Views
+
+[33mcommit 630d22d67b6fc4f0611e32cbb7a4b364fa9a481a[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Sat Feb 3 07:55:19 2024 +0200
+
+    Update View: update post.index
+
+[33mcommit 7207c3d68f6bde34b8b66f8979fdb7f26768eb91[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Sat Feb 3 06:45:57 2024 +0200
+
+    Update Post Features
+
+[33mcommit 50549f9002eb0fe369da7cacfbb37bb6b59df26c[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Sat Feb 3 05:16:28 2024 +0200
+
+    Update Feature: Update View post Feature
+
+[33mcommit ea0f4a42d6a652e07edab3f229540dc23d5865ca[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Sat Feb 3 02:47:02 2024 +0200
+
+    Finish Delete Post Feature
+
+[33mcommit 96e40669993455d209845925a66664ca793d03fe[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Sat Feb 3 02:26:21 2024 +0200
+
+    Finish Show Post and Update Post
+
+[33mcommit 50f06400b8c3434df5634a685c2d20044ef93b8b[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Sat Feb 3 00:52:22 2024 +0200
+
+    Finish Create Post Feature
+
+[33mcommit 3ed6ab6146a78c6622c739641644209354816ea6[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Fri Feb 2 23:34:44 2024 +0200
+
+    Migrate Tables on DB
+
+[33mcommit 4d38f7878c6b658f7a0ba0fbb1effa4c32f05f22[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Fri Feb 2 09:15:49 2024 +0200
+
+    Update View: update post's view
+
+[33mcommit 1e597e0bae461f6417af5aec4da2ab2dc8f2dba0[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Fri Feb 2 03:07:15 2024 +0200
+
+    Create View: Create Post View
+
+[33mcommit 81731e00851fdbc60c407ef6484e39d106f485c6[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Thu Feb 1 19:13:27 2024 +0200
+
+    Update View: posts.index view
+
+[33mcommit 9a5c95c71509d89c56438a265797012c2fa71893[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Thu Feb 1 09:17:44 2024 +0200
+
+    Create Table data view
+
+[33mcommit 3c7421cd3e67f4762cac30aa22bb76921884574f[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Thu Feb 1 04:15:30 2024 +0200
+
+    craete navbar view
+
+[33mcommit ec078b81087c41d513be4eec559a72bbf59cbf67[m
+Author: unknown <mohamednasrmahmood@gmail.com>
+Date:   Thu Feb 1 00:48:45 2024 +0200
+
+    init project

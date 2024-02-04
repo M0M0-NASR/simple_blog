@@ -9,6 +9,10 @@ use Illuminate\Http\RedirectResponse;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('authoraize')->only(["store" , "update" , "destroy"]);
+    }
 
     /**
      * Display a listing of the resource.
@@ -36,10 +40,7 @@ class PostController extends Controller
     public function store(Request $request )
     {
 
-        // $user = User::find($request->user_id);
-        // if($user->token !== $request->session()->get("user")['token'])
-        //     return redirect()->route('posts.index')->with("alert" ,"Un Authrize Action");        
-        
+       
         Post::create($request->validate(
             ["title"=>"required|string" 
             , "content"=>"required|string|" 
@@ -81,7 +82,8 @@ class PostController extends Controller
         Post::where('id' , $id)->update($request->validate(
             [ "title"=>"required|string|" 
             , "content"=>"required|string|" 
-            , "img_cover"=>"nullable"]
+            , "img_cover"=>"nullable"
+            , "user_id" =>"required"]
         ));
 
         request()->session()->flash('alert', 'Post Updated Successfully');
