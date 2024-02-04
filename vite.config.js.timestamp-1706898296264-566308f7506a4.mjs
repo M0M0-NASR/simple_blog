@@ -6,7 +6,8 @@ var vite_config_default = defineConfig({
     laravel({
       input: [
         "resources/sass/app.scss",
-        "resources/js/app.js"
+        "resources/js/app.js",
+        "resources/js/bootstrap.bundle.min.js"
       ],
       refresh: true
     })
