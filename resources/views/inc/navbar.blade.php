@@ -12,10 +12,10 @@
       <a class="navbar-brand col-lg-1 me-0 d-none d-lg-flex" href={{route('posts.index')}}">My Blog</a>
       <ul class="navbar-nav col-lg-2 justify-content-lg-start">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href={{route('posts.index')}}>Posts</a>
+          <a class="nav-link @if(request()->url() === route('posts.index')) active @endif" aria-current="page" href={{route('posts.index')}}>Posts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href={{route('posts.index')}}>Profile</a>
+          <a class="nav-link @if(request()->url() === route('posts.create')) active @endif" href={{route('posts.index')}}>Profile</a>
         </li>
       </ul>
       @auth

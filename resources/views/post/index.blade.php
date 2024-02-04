@@ -10,7 +10,6 @@
 </div>
 @endif
 
-
 <div class="text-center my-2">
   <a href="{{ route('posts.create')}}" class="btn btn-success">Create Post</a>  
 </div>

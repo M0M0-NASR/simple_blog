@@ -98,6 +98,7 @@ class PostController extends Controller
     public function share(string $id)
     {
         //
+        dd();
         throw new \Exception('Not Implemnted yet');
     }
 
