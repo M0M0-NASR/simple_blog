@@ -2,9 +2,18 @@
 @extends('layouts.app')
 
 @section('content')
+@if (session('alert'))
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>System Message!</strong> {{session('alert')}}.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 <form class="row g-3 shadow mt-3 rounded-2 p-2" action={{ route('posts.update' , ['post' =>$singlePost->id])}} method="POST">
     @csrf
     @method('put')
+    <input type="hidden" name="user_id" value="{{ request()->session()->get("user")['id']}}" >
 
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Title</label>

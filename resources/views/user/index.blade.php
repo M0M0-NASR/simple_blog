@@ -1,0 +1,34 @@
+@extends('layouts.app')
+@section('content')
+    <div class="container d-flex flex-column">
+        <div class="user-card p-4 row justify-content-center">
+            <div class="col-12 col-lg-8 gap-4 d-md-flex justify-content-center shadow rounded-3 ">
+                <div class="d-flex justify-content-center ">
+                    <svg class="bd-placeholder-img img-thumbnail rounded-lg" width="200" height=""
+                        xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice"
+                        focusable="false">
+                        <rect width="100%" height="100%" fill="#868e96">
+                        </rect>
+                        <text fill="#dee2e6" x="35%" y="50%">User Img</text>
+                    </svg>
+                </div>
+                <div class="">
+                    <div class="my-2 form-control form-control--lg">
+                        {{ $user['name'] }}
+                    </div>
+                    <div class="my-2 form-control form-control-md-lg">
+                        {{ $user['email'] }}
+                    </div>
+                    <div class="my-2 form-control form-control-md-lg">
+                        {{ $user['created_at'] }}
+                    </div>
+                </div>
+                
+            </div>
+            <div class="buttons row justify-content-center my-2 p-1">
+                <button class="btn btn-success col-md-4  m-1" onclick="alert()" >Update Cover</button>
+                <a href="{{route('user.edit' , $user['id'])}}" class="btn btn-success col-md-4  m-1" onclick="alert()" >Update Info</a>
+            </div>
+        </div>
+    </div>
+@endsection

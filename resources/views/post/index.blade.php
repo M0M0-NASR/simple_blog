@@ -10,7 +10,6 @@
 </div>
 @endif
 
-
 <div class="text-center my-2">
   <a href="{{ route('posts.create')}}" class="btn btn-success">Create Post</a>  
 </div>
@@ -23,6 +22,7 @@
         <th scope="col">Title</th>
         <th scope="col">Content</th>
         <th scope="col">Created At</th>
+        <th scope="col">tags</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -38,6 +38,16 @@
         <td>{{$post->title}}</td>
         <td>{{$post->content}}</td>
         <td>{{$post->created_at}}</td>
+        
+        <td>
+          @foreach ($post->tags()->get() as $tag)
+          <span class="badge rounded-pill bg-danger">
+            {{$tag->name}}
+          </span>
+        
+          @endforeach
+        </td>
+          
         <td class="actions d-grid d-md-flex gap-1">
             <a href={{route('posts.show', $post->id )}} class="btn btn-success ">view</a>
             <a href={{route('posts.edit', $post->id )}}  class="btn btn-primary  ">edit</a>
@@ -61,6 +71,8 @@
                     <form action={{route('posts.destroy', $post->id )}} method="post">
                       @csrf()
                       @method("delete")
+                      <input type="hidden" name="user_id" value="{{ request()->session()->get("user")['id']}}" >
+
                       <input type="submit" value="Delete" class="btn btn-danger">
                     </form>
                   </div>
@@ -78,6 +90,34 @@
     No Data To Show
   </div>
   @endempty
-  @endsection
- 
   
+  
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
