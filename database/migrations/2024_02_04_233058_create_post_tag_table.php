@@ -15,17 +15,15 @@ return new class extends Migration
             $table->id();
             
             // post_Id column connected to posts.id column 
-            $table->unsignedBigInteger('post_id')->nullable();
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreignId('post_id')->constrained('posts')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
             
             // tag_Id column connected to tags.id column 
-            $table->unsignedBigInteger('tag_id')->nullable();
-            $table->foreign('tag_id')->references('id')->on('tags');
+            $table->foreignId('tag_id')->constrained('tags')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
             
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */

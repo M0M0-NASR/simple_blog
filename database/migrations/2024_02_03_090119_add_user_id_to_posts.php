@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             
-            // Null to avoid DB constraints
-            $table->unsignedBigInteger('user_id')->nullable();
-            
-            $table->foreign("user_id")->references("id")->on("users");
+            // user_Id column connected to user.id column 
+                        
+            $table->foreignId("user_id")->constrained('users')->references("id")->cascadeOnDelete()->cascadeOnUpdate();
 
         });
     }
