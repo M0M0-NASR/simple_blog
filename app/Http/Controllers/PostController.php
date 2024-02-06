@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Intervention\Image\Image;
+use Intervention\Image\ImageManager;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -54,7 +56,10 @@ class PostController extends Controller
         );
 
         if($request->file('img_cover'))
+        {
+
             $data['img_cover'] = request()->file('img_cover')->store("posts");        
+        }
         
         Post::create($data);
         
