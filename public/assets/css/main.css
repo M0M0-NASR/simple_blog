@@ -15,4 +15,12 @@ table  td img
     /* object-position: 0 0; */
 }
 
-
+#suggestions
+{
+    width: 240px;
+    height: 100px;
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 100;
+    background-color: bisque
+}

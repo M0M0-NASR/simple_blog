@@ -73,7 +73,7 @@ class RegisterController extends Controller
         // requset()->re
         // session('user', $user->toArray());
         request()->session()->put('user', $user->toArray());
-        dd(session('user'));
+        // dd(session('user'));
         return $user;
     }
 }

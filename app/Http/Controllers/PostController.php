@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -22,9 +20,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        // dd(request()->session()->all());
+        $user_id = request()->session()->get("user")['id'];
 
-        $allPosts = Post::all();
+        $allPosts = Post::where("user_id" ,$user_id)->get();
+
         return view("post/index", compact("allPosts"));
     }
 
@@ -42,7 +41,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $data = $request->validate(
             [
                 "title" => "required|string|"
@@ -56,14 +55,13 @@ class PostController extends Controller
         );
 
         // Handle Image Upload
-        if($request->file('img_cover'))
-        {
+        if ($request->file('img_cover')) {
 
-            $data['img_cover'] = request()->file('img_cover')->store("posts");        
+            $data['img_cover'] = request()->file('img_cover')->store("posts");
         }
-        
+
         Post::create($data);
-        
+
         request()->session()->flash('alert', 'Post Created Successfully');
 
         return redirect()->route('posts.index');
@@ -108,10 +106,9 @@ class PostController extends Controller
         );
 
         // Handle Image Upload
-        if($request->file('img_cover'))
-        {
+        if ($request->file('img_cover')) {
 
-            $data['img_cover'] = request()->file('img_cover')->store("posts");        
+            $data['img_cover'] = request()->file('img_cover')->store("posts");
         }
 
         Post::where('id', $id)->update($data);

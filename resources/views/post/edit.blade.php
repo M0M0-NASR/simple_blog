@@ -13,8 +13,8 @@
 <form enctype="multipart/form-data" class="row g-3 shadow mt-3 rounded-2 p-2" action={{ route('posts.update' , ['post' =>$singlePost->id])}} method="POST">
     @csrf
     @method('put')
-    <input type="hidden" name="user_id" value="{{ request()->session()->get("user")['id']}}" >
-
+    <input type="hidden" name="user_id" value="{{ request()->session()->get("user")['id']}}">
+  
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Title</label>
       <input name="title" value="{{$singlePost->title}}" type="text" 

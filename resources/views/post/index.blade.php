@@ -41,14 +41,15 @@
         <td>{{$post->title}}</td>
         <td>{{$post->content}}</td>
         <td>{{$post->created_at}}</td>
-        <td wi > <div class="d-flex "> <img class="img-fluid" src="{{Storage::url($post->img_cover)}}" alt="cover" srcset=""></div></td>
+        <td> <div class="d-flex "> <img class="img-fluid" src="{{Storage::url($post->img_cover)}}" alt="cover" srcset=""></div></td>
         
         <td>
-          @foreach ($post->tags()->get() as $tag)
-          <span class="badge rounded-pill bg-danger">
-            {{$tag->name}}
-          </span>
-        
+          <div class="d-flex flex-wrap">
+            @foreach ($post->tags()->get() as $tag)
+            <span class="badge rounded-pill bg-danger">
+              {{$tag->name}}
+            </span>
+          </div>
           @endforeach
         </td>
           
