@@ -55,6 +55,7 @@ class PostController extends Controller
             ]
         );
 
+        // Handle Image Upload
         if($request->file('img_cover'))
         {
 
@@ -93,19 +94,27 @@ class PostController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        Post::where('id', $id)->update(
-            $request->validate(
-                [
-                    "title" => "required|string|"
-                    ,
-                    "content" => "required|string|"
-                    ,
-                    "img_cover" => "nullable"
-                    ,
-                    "user_id" => "required"
-                ]
-            )
+
+        $data = $request->validate(
+            [
+                "title" => "required|string|"
+                ,
+                "content" => "required|string|"
+                ,
+                "img_cover" => "nullable|file|image"
+                ,
+                "user_id" => "required|"
+            ]
         );
+
+        // Handle Image Upload
+        if($request->file('img_cover'))
+        {
+
+            $data['img_cover'] = request()->file('img_cover')->store("posts");        
+        }
+
+        Post::where('id', $id)->update($data);
 
         request()->session()->flash('alert', 'Post Updated Successfully');
 
