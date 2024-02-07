@@ -29,16 +29,14 @@
             @enderror
 
         </div>
-        <div class="col-12">
-          <label for="input">Tags</label>
-          <div class="d-flex align-items-center ">
-            <div class="col-3 ">
-              <input class="form-control" type="text" id="input">
-          </div>
-          <div class="d-flex flex-wrap mx-2" ><span>adfdsfa</span><span>adfdsfa</span><span>adfdsfa</span><span>adfdsfa</span> <span>adfdsfa</span></div>
-
-          </div>
-      </div>
+        <div class="col-md-12 d-flex flex-wrap gap-1" id="tags">
+            <span class="badge rounded-pill bg-danger "><button id="close" type="button" class="btn-close" aria-label="Close"></button> tech</span>
+            <span class="badge rounded-pill bg-danger "><button id="close" type="button" class="btn-close" aria-label="Close"></button>Development</span>
+        </div>
+        <div class="col-md-4">
+            <label for="input">Tags</label>
+            <input class="form-control" type="text" id="input">
+        </div>
         <div class="col-12">
             <label for="content"></label>
             <textarea name="content" id="#content" class="w-100 @error('content') is-invalid @enderror" rows="10">{{ old('content') }}</textarea>
@@ -48,7 +46,7 @@
                 @enderror
             </div>
         </div>
-        
+
         <div class="col-12">
             <button type="submit" class="btn btn-success">Create</button>
             <input type="reset" value="Reset" class="btn btn-danger">
@@ -57,4 +55,5 @@
     </form>
 
     <script src="{{ asset('assets/js/autocomplit.js') }}"></script>
+    <script src="{{ asset('assets/js/deleteTags.js') }}"></script>
 @endsection

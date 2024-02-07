@@ -1,5 +1,5 @@
 
-.card img 
+.card img
 {
     width: 100%;
     height: 70vh;
@@ -7,20 +7,10 @@
     object-position: 0 0;
 }
 
-table  td img 
+table td img
 {
     width: 100px;
     height: 90px !important;
     object-fit: cover;
-    /* object-position: 0 0; */
 }
 
-#suggestions
-{
-    width: 240px;
-    height: 100px;
-    overflow-y: scroll;
-    position: absolute;
-    z-index: 100;
-    background-color: bisque
-}
