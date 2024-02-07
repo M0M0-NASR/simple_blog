@@ -20,6 +20,7 @@ class PostController extends Controller
      */
     public function index()
     {
+
         $user_id = request()->session()->get("user")['id'];
 
         $allPosts = Post::where("user_id" ,$user_id)->get();
