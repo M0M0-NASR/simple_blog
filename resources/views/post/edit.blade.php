@@ -38,10 +38,12 @@
     </div>
     <div class="col-md-12 d-flex flex-wrap gap-1" id="tags">
       @foreach ($singlePost->tags()->get() as $tag)
-            <span class="badge rounded-pill bg-danger">
-              {{$tag->name}}
-            </span>
-            @endforeach
+      <span class="badge rounded-pill bg-danger align-middle">
+          {{$tag->name}}
+        <button type="button" aria-label="Close" class="btn-close mx-1"></button>
+        <input type="hidden" name="tags[]" value="{{ $tag->id}}">
+      </span>      
+      @endforeach
     </div>
     <div class="col-md-4">
       <label for="input">Tags</label>
