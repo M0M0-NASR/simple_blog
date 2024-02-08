@@ -9,12 +9,12 @@ $spans =[]
 
 //get post Id
 const currentUrl = window.location.href;
+
 const parts = currentUrl.split("/");
-const id = parts[parts.length - 2] == "create"?"":parts[parts.length - 2];  
 
+const id = (parts[4] === 'create')?"":parts[4];  
 
-
-
+console.log(parts);
 
 // Use fetch API to get data from the server
 fetch(`/tags/${id}`)

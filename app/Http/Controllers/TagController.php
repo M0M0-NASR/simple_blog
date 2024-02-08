@@ -16,6 +16,7 @@ class TagController extends Controller
         }
 
         $postTags = Post::find($id)->tags()->pluck("tag_id", "name");
+        
         $notSelectedTags = Tag::whereNotIn("id", array_values($postTags->toArray()))->pluck('id', 'name');
         
         return response()->json($notSelectedTags);
