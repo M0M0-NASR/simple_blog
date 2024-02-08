@@ -31,4 +31,4 @@ Route::middleware(['auth'])->group( function () {
 });
 
 
-Route::get('/tags', [TagController::class,'index']);
+Route::get('/tags/{id?}', [TagController::class,'index']);

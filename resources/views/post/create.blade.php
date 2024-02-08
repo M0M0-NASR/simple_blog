@@ -56,5 +56,5 @@
 
     </form>
 
-    <script src="{{ asset('assets/js/autocomplit.js') }}"></script>
+    <script src="{{ asset('assets/js/handleTags.js') }}"></script>
 @endsection
