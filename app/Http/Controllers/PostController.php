@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -39,6 +41,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(request()->tags);
+        if(request()->has("tags")){
+            $tagsExists = Tag::whereIn("id", request()->tags)->exists();
+            if(!$tagsExists)
+            {
+                request()->session()->flash("alert","Errors with Tags");
+                return redirect()->route('posts.create');
+                
+            }
+        }
+
 
         $data = $request->validate(
             [
@@ -58,7 +71,7 @@ class PostController extends Controller
             $data['img_cover'] = request()->file('img_cover')->store("posts");
         }
 
-        Post::create($data);
+        Post::create($data)->tags()->sync($request->tags);
 
         request()->session()->flash('alert', 'Post Created Successfully');
 

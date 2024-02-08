@@ -8,7 +8,7 @@ class TagController extends Controller
 {
     public function index()
     {
-        $tags = Tag::all()->pluck("name")->toArray();
+        $tags = Tag::all()->pluck("id" ,"name");
         return response()->json($tags);
     }
 }

@@ -14,3 +14,17 @@ table td img
     object-fit: cover;
 }
 
+/* Reset styles for input elements */
+input {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+}
+
+/* Additional styling if needed */

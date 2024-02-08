@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- @error('user_id')
-  @dd($message)
-@enderror --}}
+@if (session('alert'))
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>System Message!</strong> {{session('alert')}}.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
     <form class="row g-3 shadow mt-3 rounded-2 p-2" action="{{ route('posts.store') }}" method="POST"
         enctype="multipart/form-data">
@@ -30,8 +34,6 @@
 
         </div>
         <div class="col-md-12 d-flex flex-wrap gap-1" id="tags">
-            <span class="badge rounded-pill bg-danger "><button id="close" type="button" class="btn-close" aria-label="Close"></button> tech</span>
-            <span class="badge rounded-pill bg-danger "><button id="close" type="button" class="btn-close" aria-label="Close"></button>Development</span>
         </div>
         <div class="col-md-4">
             <label for="input">Tags</label>
@@ -55,5 +57,4 @@
     </form>
 
     <script src="{{ asset('assets/js/autocomplit.js') }}"></script>
-    <script src="{{ asset('assets/js/deleteTags.js') }}"></script>
 @endsection
