@@ -36,7 +36,17 @@
         @enderror 
       </div> 
     </div>
-    
+    <div class="col-md-12 d-flex flex-wrap gap-1" id="tags">
+      @foreach ($singlePost->tags()->get() as $tag)
+            <span class="badge rounded-pill bg-danger">
+              {{$tag->name}}
+            </span>
+            @endforeach
+    </div>
+    <div class="col-md-4">
+      <label for="input">Tags</label>
+      <input class="form-control" type="text" id="input">
+  </div>
     <div class="col-12">
         <label for="content"></label>
         <textarea name="content"  id="#content" class="w-100 @error('title') is-invalid @enderror"
@@ -52,5 +62,7 @@
       <button type="submit" class="btn btn-primary">Update</button>
     </div>
   </form>
+
+  <script src="{{ asset('assets/js/handleTags.js') }}"></script>
 
 @endsection

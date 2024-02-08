@@ -49,8 +49,8 @@
             <span class="badge rounded-pill bg-danger">
               {{$tag->name}}
             </span>
+            @endforeach
           </div>
-          @endforeach
         </td>
           
         <td >
