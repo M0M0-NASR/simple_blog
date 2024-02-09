@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -122,7 +121,9 @@ class PostController extends Controller
             $data['img_cover'] = request()->file('img_cover')->store("posts");
         }
 
-        Post::where('id', $id)->update($data);
+        // Update posts table and post_tag_table
+        Post::find($id)->update($data);
+        Post::find( $id)->tags()->sync(request()->tags);
 
         request()->session()->flash('alert', 'Post Updated Successfully');
 
