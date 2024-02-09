@@ -20,10 +20,10 @@
       </ul>
       @auth
       <div class="d-lg-flex col-lg-6 justify-content-lg-center" >
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+        <div class="d-flex" >
+          <input  class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#searchModal">Search</button>
+        </div>
       @endauth
       </div>
       <div class="d-lg-flex col-lg-3 justify-content-lg-end">
@@ -43,3 +43,19 @@
   </div>
 </nav>
 
+<!-- Modal  For  Confrim Delete -->
+<div class="modal fade text-dark" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <input name="search" id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      </div>
+      <div id="searchResults" class="modal-body text-dark">
+        // searching 
+      </div>
+      <div class="modal-footer">
+       
+      </div>
+    </div>
+  </div>
+</div>

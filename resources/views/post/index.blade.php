@@ -96,7 +96,6 @@
               </div>
               
             </div>
-            <!-- Delete Button compont -->
           </div>
 
         </td>

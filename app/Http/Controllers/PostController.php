@@ -21,7 +21,7 @@ class PostController extends Controller
 
         $user_id = request()->session()->get("user")['id'];
 
-        $allPosts = Post::where("user_id" ,$user_id)->get();
+        $allPosts = Post::where("user_id", $user_id)->get();
 
         return view("post/index", compact("allPosts"));
     }
@@ -41,13 +41,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // dd(request()->tags);
-        if(request()->has("tags")){
+        if (request()->has("tags")) {
             $tagsExists = Tag::whereIn("id", request()->tags)->exists();
-            if(!$tagsExists)
-            {
-                request()->session()->flash("alert","Errors with Tags");
+            if (!$tagsExists) {
+                request()->session()->flash("alert", "Errors with Tags");
                 return redirect()->route('posts.create');
-                
+
             }
         }
 
@@ -123,7 +122,7 @@ class PostController extends Controller
 
         // Update posts table and post_tag_table
         Post::find($id)->update($data);
-        Post::find( $id)->tags()->sync(request()->tags);
+        Post::find($id)->tags()->sync(request()->tags);
 
         request()->session()->flash('alert', 'Post Updated Successfully');
 
@@ -154,5 +153,33 @@ class PostController extends Controller
 
 
         return redirect()->route('posts.index');
+    }
+
+    /**
+     * Live search in Posts Table.
+     */
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $output = "";
+            $posts = Post::where('title', 'LIKE', '%' . $request->search . "%")
+                ->where('content', 'LIKE', '%' . $request->search . "%")
+                ->get();
+            if ($posts) {
+                foreach ($posts as $key => $post) {
+                    $id = $post->id;
+                    $output .= '<div>' .
+                        "<a href='posts/$id/show' >" . $post->title . '</a>' .
+                        '<h2>' . $post->content . '</h2>' .
+                        '</div>';
+                }
+            }
+            if (count($posts) == 0) {
+                $output = "<div class='d-flex justify-content-center'>No Posts Available </div>";
+            }
+            return Response($output);
+
+        }
+
     }
 }

@@ -22,6 +22,7 @@ Auth::routes(["verify"=> true]);
 // Post Route
 Route::middleware(["auth"])->group( function () {
     Route::resource("/posts", PostController::class);
+    Route::get("/posts/search",[ PostController::class , "search"])->name('posts.search');
     Route::get("/posts/{post}/share",[ PostController::class , "share"])->name('posts.share');
 
 });
@@ -29,6 +30,5 @@ Route::middleware(["auth"])->group( function () {
 Route::middleware(['auth'])->group( function () {
     Route::resource('/user', UserController::class);
 });
-
 
 Route::get('/tags/{id?}', [TagController::class,'index']);
