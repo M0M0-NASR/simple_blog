@@ -12,19 +12,42 @@ class UserController extends Controller
     public function index()
     {
         $user = request()->session()->get("user");
+        // dd($user);
+
         return view("user/index", compact("user"));
     }
     public function show($id)
     {
         $user = User::find($id);
+
         return view("user/index", compact("user"));
     }
     public function edit(string $id)
     {
         $user = User::find($id);
+
         return view("user/edit", compact("user"));
     }
     public function update(string $id)
     {
+        $data = request()->validate(
+            [
+                "name"=> "required|string",
+                "email"=> "required|email|unique:users,email",
+                "img_cover"=> "nullable|file|image",
+            ]
+            );
+
+        if(request()->file('img_cover'))
+        {
+            $data['img_cover'] = request()->file('img_cover')->store('users');
+        }
+
+        User::find($id)->update($data);
+
+        request()->session()->flash('alert' , 'Proflie Updated Successfully');
+
+        return redirect()->route('user.edit' , ['user'=> $id]);
+
     }
 }
