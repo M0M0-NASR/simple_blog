@@ -16,10 +16,13 @@ use App\Http\Controllers\TagController;
 |
 */
 
+// Home Routes
+Route::redirect('/', '/posts', 301);
+
 // Login , Register Routes
 Auth::routes(["verify"=> true]);
 
-// Post Route
+// Post Routes
 Route::middleware(["auth"])->group( function () {
     Route::resource("/posts", PostController::class);
     Route::get("/posts/search",[ PostController::class , "search"])->name('posts.search');
@@ -27,8 +30,14 @@ Route::middleware(["auth"])->group( function () {
 
 });
 
+
+// User Routes
 Route::middleware(['auth'])->group( function () {
     Route::resource('/user', UserController::class);
 });
 
+
+// User Routes
 Route::get('/tags/{id?}', [TagController::class,'index']);
+
+
