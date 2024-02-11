@@ -30,14 +30,25 @@ class UserController extends Controller
     }
     public function update(string $id)
     {
+        // validate input data
         $data = request()->validate(
             [
                 "name"=> "required|string",
-                "email"=> "required|email|unique:users,email",
+                "email"=> "required|email",
                 "img_cover"=> "nullable|file|image",
             ]
             );
+            
+        
+        // validate if email input change
+        if(session('user.email') != $data['email'])
+        {
+            $data['email'] = request()->validate(["email"=> "unique:users,email"])['email'];
+            session(['user.email' => $data['email']]);
+            
+        }
 
+        // store image profile in users dir
         if(request()->file('img_cover'))
         {
             $data['img_cover'] = request()->file('img_cover')->store('users');
