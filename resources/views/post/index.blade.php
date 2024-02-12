@@ -80,24 +80,22 @@
                     </div>
                     <div id="shareLinks" class="modal-body text-dark">
                         
-
+                      @php
+                        $links = Share::currentPage()
+                                ->facebook()
+                                ->twitter()
+                                ->linkedin('')
+                                ->whatsapp()
+                                ->getRawLinks();
+                      @endphp
 
 
                       <div>
-    
-                        <i class="fa-brands fa-facebook"><a href="{{Share::page("test")->facebook()->getRawLinks()}}"></a></i>
-                        <i class="fa-brands fa-linkedin"></i>
-                        <i class="fa-brands fa-reddit"></i>
-                        <i class="fa-brands fa-whatsapp"></i>                        
-                        {{-- {{Share::page('http://simpleblog', 'Share title')
-                        ->facebook()
-                        ->twitter()
-                        ->linkedin('Extra linkedin summary can be passed here')
-                        ->whatsapp()
-                      }}                      
-                         --}}
+                        @foreach ($links as $key => $link )
+                          
+                        <a href={{$link}}><i class="fa-brands fa-{{$key}}"></i></a>
+                        @endforeach
                       </div>  
-
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
