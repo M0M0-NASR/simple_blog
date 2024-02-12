@@ -6,6 +6,7 @@
     <meta name="_token" content="{{ csrf_token() }}">
 
     <link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/all.min.css')}}" rel="stylesheet">
 
 
     <!-- CSRF Token -->
@@ -18,6 +19,8 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     
     <script src="{{asset('assets/js/jquery-3.7.1.min.js')}}"></script>
+    <script src="{{ asset('assets/js/share.js') }}"></script>
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js' , "resources/js/bootstrap.bundle.min.js"])
 </head>

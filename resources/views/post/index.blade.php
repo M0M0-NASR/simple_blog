@@ -65,11 +65,55 @@
               <a href={{route('posts.edit', $post->id )}}  class="btn btn-primary  w-100">edit</a>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
-
-              <a href={{route('posts.share', $post->id )}} class="btn btn-secondary w-100">share</a>
+              <button class="btn btn-secondary w-100" data-bs-toggle="modal" data-bs-target="#shareModal">share</button>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
               <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">delete</button>
+              
+              <!-- Modal  For  Share -->
+              <div class="modal fade text-dark" id="shareModal" tabindex="-1" aria-labelledby="#shareModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Post</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="shareLinks" class="modal-body text-dark">
+                        
+
+
+
+                      <div>
+    
+                        <i class="fa-brands fa-facebook"><a href="{{Share::page("test")->facebook()->getRawLinks()}}"></a></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-reddit"></i>
+                        <i class="fa-brands fa-whatsapp"></i>                        
+                        {{-- {{Share::page('http://simpleblog', 'Share title')
+                        ->facebook()
+                        ->twitter()
+                        ->linkedin('Extra linkedin summary can be passed here')
+                        ->whatsapp()
+                      }}                      
+                         --}}
+                      </div>  
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <form action={{route('posts.destroy', $post->id )}} method="post">
+                        @csrf
+                        @method("delete")
+                        <input type="hidden" name="user_id" value="{{ request()->session()->get("user")['id']}}" >
+  
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+
               <!-- Modal  For  Confrim Delete -->
               <div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
