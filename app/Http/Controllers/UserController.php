@@ -11,8 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user = request()->session()->get("user");
-        // dd($user);
+        $user = (object)request()->session()->get("user");
 
         return view("user/index", compact("user"));
     }

@@ -26,4 +26,8 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function getCreatedAtAttribute($value)
+    {
+        return date('Y / m / d' ,strtotime($value));
+    }
 }
