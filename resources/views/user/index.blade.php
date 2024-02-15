@@ -5,7 +5,7 @@
             <div class="col-12 col-lg-8 gap-4 d-md-flex justify-content-center shadow rounded-3 ">
                 <div class="d-flex justify-content-center ">
                     
-                    @if ($user->img_cover)
+                    @if (isset($user->img_cover))
                     <img  src="{{Storage::url($user->img_cover)}}"  class="img_fluid" width="200" alt="...">
                     @else
   
