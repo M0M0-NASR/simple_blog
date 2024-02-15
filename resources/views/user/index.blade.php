@@ -33,7 +33,6 @@
                 
             </div>
             <div class="buttons row justify-content-center my-2 p-1">
-                
                 <a href="{{route('user.edit' , $user->id)}}" class="btn btn-success col-md-4  m-1" >Update Cover</a>
                 <a href="{{route('user.edit' , $user->id)}}" class="btn btn-success col-md-4  m-1" >Update Info</a>
             </div>

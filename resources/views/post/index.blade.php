@@ -65,6 +65,7 @@
               <a href={{route('posts.edit', $post->id )}}  class="btn btn-primary  w-100">edit</a>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
+
               <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">delete</button>
               
               <!-- Modal  For  Confrim Delete -->
@@ -109,6 +110,9 @@
   
   
 @endsection
+<script src="{{asset('assets/js/share.js')}}"></script>
+
+
 
 
 
