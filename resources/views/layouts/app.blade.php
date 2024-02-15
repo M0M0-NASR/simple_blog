@@ -13,10 +13,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <title>{{ config('app.name', 'Laravel') }}</title>
-    
+    <meta property="og:title" content="{{config('app.name', 'Laravel') }}">
+    <meta property="og:description" content="this test appp">
+    <meta name="keywords" content= 'Laravel , PHP'>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="{{asset('assets/css/jssocials-theme-classic.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/jssocials.css')}}" rel="stylesheet">
     
     <script src="{{asset('assets/js/jquery-3.7.1.min.js')}}"></script>
     <script src="{{ asset('assets/js/share.js') }}"></script>

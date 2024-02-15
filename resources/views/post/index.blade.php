@@ -79,23 +79,15 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div id="shareLinks" class="modal-body text-dark">
-                        
-                      @php
-                        $links = Share::currentPage()
-                                ->facebook()
-                                ->twitter()
-                                ->linkedin('')
-                                ->whatsapp()
-                                ->getRawLinks();
-                      @endphp
+                    
+                    {{!! $share !!}}
 
-
-                      <div>
+                      {{-- <div class="icons ">
                         @foreach ($links as $key => $link )
                           
-                        <a href={{$link}}><i class="fa-brands fa-{{$key}}"></i></a>
+                        <a class="fs-2 mx-1" href={{$link}}><i class="fa-brands fa-{{$key}}"></i></a>
                         @endforeach
-                      </div>  
+                      </div>   --}}
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -154,6 +146,9 @@
   
   
 @endsection
+<script src="{{asset('assets/js/share.js')}}"></script>
+
+
 
 
 
