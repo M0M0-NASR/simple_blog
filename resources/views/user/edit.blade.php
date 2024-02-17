@@ -10,7 +10,7 @@
 </div>
 @endif
 <div class="d-flex justify-content-center">
-    <form enctype="multipart/form-data" class="row g-3 shadow mt-3 rounded-2 p-2 w-50 rounded-3" action={{ route('user.update' , ['user' =>$user->id])}} method="POST">
+    <form enctype="multipart/form-data" class="bg-light row g-3 shadow mt-3 rounded-2 p-2 w-50 rounded-3" action={{ route('user.update' , ['user' =>$user->id])}} method="POST">
         @csrf
         @method('put')
         <input type="hidden" name="user_id" value="{{ request()->session()->get("user")['id']}}" >

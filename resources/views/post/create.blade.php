@@ -9,7 +9,7 @@
 </div>
 @endif
 
-    <form class="row g-3 shadow mt-3 rounded-2 p-2" action="{{ route('posts.store') }}" method="POST"
+    <form class="bg-light row g-3 shadow mt-3 rounded-2 p-2" action="{{ route('posts.store') }}" method="POST"
         enctype="multipart/form-data">
 
         @csrf
