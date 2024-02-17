@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="container d-flex flex-column">
-        <div class="user-card p-4 row justify-content-center">
-            <div class="col-12 col-lg-8 gap-4 d-md-flex justify-content-center shadow rounded-3 ">
-                <div class="d-flex justify-content-center ">
+        <div class=" user-card p-4 row justify-content-center">
+            <div class="bg-light col-12 col-lg-8 gap-4 d-md-flex justify-content-center shadow rounded-3 p-4 shadow">
+                <div class="bg-light d-flex justify-content-center ">
                     
                     @if (isset($user->img_cover))
                     <img  src="{{Storage::url($user->img_cover)}}"  class="img_fluid" width="200" alt="...">
