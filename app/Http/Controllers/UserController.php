@@ -57,7 +57,8 @@ class UserController extends Controller
         User::find($id)->update($data);
 
         // Update Session 
-        array_merge(session('user'), $data);
+        session(['user' => array_merge(session('user'), $data)]);
+        // dd($data , session('user'));
 
         request()->session()->flash('alert' , 'Proflie Updated Successfully');
 
