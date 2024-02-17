@@ -70,10 +70,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'token' => $token,
         ]);
-        // requset()->re
-        // session('user', $user->toArray());
+
         request()->session()->put('user', $user->toArray());
-        // dd(session('user'));
+        
         return $user;
     }
 }
