@@ -30,6 +30,7 @@ input {
 /* Additional styling if needed */
 
 
+
 body {
     margin: 0; /* Remove default body margin */
     position: relative;
@@ -49,3 +50,4 @@ body::before {
     -moz-filter: brightness(101%) saturate(216%) opacity(55%);
     z-index: -1; /* Ensure the pseudo-element is behind the content */
 }
+

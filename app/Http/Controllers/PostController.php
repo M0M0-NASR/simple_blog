@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use App\Models\Post;
+use Jorenvh\Share\ShareFacade;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -23,7 +24,13 @@ class PostController extends Controller
 
         $allPosts = Post::where("user_id", $user_id)->get();
 
-        return view("post/index", compact("allPosts"));
+        $share = ShareFacade::currentPage()
+            ->facebook()
+            ->twitter()
+            ->linkedin('')
+            ->whatsapp();
+
+        return view("post/index", compact("allPosts" , "share"));
     }
 
     /**
